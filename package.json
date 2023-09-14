@@ -1,0 +1,16 @@
+{
+  "name": "upgrade-flatfile",
+  "version": "1.0.0",
+  "description": "Learn how to upgrade from Flatfile Portal 2.0 to Flatfile Platform",
+  "main": "Portal-2/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@flatfile/adapter": "^2.9.6",
+    "date-fns": "^2.21.1",
+    "jquery": "^3.6.0"
+  }
+}
