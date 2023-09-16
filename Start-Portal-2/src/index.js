@@ -1,13 +1,7 @@
-import FlatfileImporter from "@flatfile/adapter";
-import $ from "jquery";
-import { format, isDate, isFuture, parseISO } from "date-fns";
-import countries from "./countries";
-import { schemas } from "./schemas";
-
 const { contactSchema } = schemas;
 
 const importer = new FlatfileImporter(
-    "5fdae7f9-84ca-43bd-b178-2c401871be38",
+    "YOUR_LICENSE_KEY",
     contactSchema
 );
 
@@ -18,111 +12,29 @@ importer.setCustomer({
 
 // Allows the optional +1 international code
 function formatPhoneNumber(phoneNumberString) {
-    var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
-    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+    let cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+    let match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
     if (match) {
-        var intlCode = match[1] ? "+1 " : "";
+        let intlCode = match[1] ? "+1 " : "";
         return [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join("");
     }
     return "Invalid phone number";
 }
 
-importer.registerStepHook("review", ({ headers_matched }) => {
-    // review stephook happens right before the data goes to the review page
-    if (
-        headers_matched.find((v) => v.matched_key === "firstName") &&
-        headers_matched.find((v) => v.matched_key === "lastName")
-    ) {
-        importer.addVirtualField(
-            {
-                label: "Full Name",
-                key: "fullName",
-                description:
-                    'Only create this field when columns "First Name" and "Last Name" are matched'
-            },
-            {
-                order: 2
-                //hideFields: ["firstName", "lastName"]
-            }
-        );
-    }
-});
-
-importer.registerFieldHook("email", async (values) => {
-    try {
-        let serverEmails;
-        await fetch(
-            "https://v1.nocodeapi.com/brentkwebdev/google_sheets/KcPvLNxbwsYSIbZK?tabId=Sheet1"
-        )
-            .then((response) => response.json())
-            .then((json) => {
-                serverEmails = json.data.map((x) => {
-                    return x.email;
-                });
-            });
-        let newValues = [];
-        values.map((y) => {
-            if (serverEmails.includes(y[0])) {
-                newValues.push([
-                    {
-                        info: [
-                            {
-                                message: "Email already on the server",
-                                level: "error" // should be 'info', 'warning' or 'error'
-                            }
-                        ]
-                    },
-                    y[1]
-                ]);
-            }
-            return y;
-        });
-        return newValues;
-    } catch (err) {
-        console.log("FieldHook failure: ", err);
-    }
-});
-
 importer.registerRecordHook(async (record, index, mode) => {
     let out = {};
 
-    // if virtual field has been added, insert values into it
-    if (record.hasOwnProperty("fullName") && !record.fullName) {
-        out.fullName = {
-            value: record.firstName + " " + record.lastName
-        };
-    }
-
     //errors for emails that already exist
-    if (record.email && mode === "change") {
-        try {
-            await fetch(
-                `https://v1.nocodeapi.com/brentkwebdev/google_sheets/KcPvLNxbwsYSIbZK/search?tabId=Sheet1&searchKey=email&searchValue=${record.email}`
-            )
-                .then((response) => response.json())
-                .then((json) => {
-                    if (json.length > 0) {
-                        out.email = {
-                            info: [
-                                {
-                                    message: "Email address already exists.",
-                                    level: "error"
-                                }
-                            ]
-                        };
+    if (record.email) {
+        if (record.email.includes('flatfile.io')) {
+            out.email = {
+                info: [
+                    {
+                        message: "Flatfile emails should use flatfile.com ending only",
+                        level: "error"
                     }
-                });
-        } catch (err) {
-            console.log("RecordHook NocodeAPI failure: ", err);
-        }
-    }
-
-    // name splitting example: splits full names in the first name field
-    if (record.firstName && !record.lastName) {
-        if (record.firstName.includes(" ")) {
-            const components = record.firstName.split(" ");
-            out.firstName = { value: components.shift() };
-            out.lastName = { value: components.join(" ") };
+                ]
+            }
         }
     }
 
@@ -206,10 +118,6 @@ importer.registerRecordHook(async (record, index, mode) => {
                     ]
                     : []
             };
-        } else {
-            out.country = {
-                value: record.country
-            };
         }
     }
     if (
@@ -229,7 +137,6 @@ importer.registerRecordHook(async (record, index, mode) => {
 $("#launch").click(function () {
     importer
         .requestDataFromUser()
-
         .then(function (results) {
             importer.displaySuccess("Thanks for your data.");
             $("#raw_output").text(JSON.stringify(results.data, " ", 2));

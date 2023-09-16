@@ -2,21 +2,18 @@
 <head>
     <title>Flatfile Demo</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="src/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./src/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/@flatfile/adapter/build/dist/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/index.min.js"></script>
 </head>
-
-<body>
 <body>
 <div id="main">
     <input type="button" id="launch" value="Import Contacts" />
-    <div class="download">
-        <a href="leads_list.csv" target="_blank" rel="noopener noreferrer">
-            Download a sample csv file here
-        </a>
-    </div>
     <textarea id="raw_output">Your raw output will appear here.</textarea>
 </div>
-
-<script src="src/index.js"></script>
+<script src="./src/countries.js"></script>
+<script src="./src/schemas.js"></script>
+<script src="./src/index.js"></script>
 </body>
 </html>

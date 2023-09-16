@@ -1,0 +1,17 @@
+{
+  "name": "finish-platform",
+  "version": "1.0.0",
+  "description": "Final implementation of the upgrade from Portal 2 to Platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@flatfile/api": "^1.5.25",
+    "@flatfile/javascript": "^0.1.10",
+    "@flatfile/listener": "^0.3.15",
+    "@flatfile/plugin-record-hook": "^1.1.1"
+  }
+}

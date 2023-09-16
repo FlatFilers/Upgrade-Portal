@@ -1,19 +1,15 @@
-export const schemas = {
+const schemas = {
     contactSchema: {
         fields: [
             {
                 label: "First Name",
                 key: "firstName",
-                sizeHint: 0.8,
-                alternates: ["name", "full name", "first"],
                 description: "First or full name",
                 validators: [{ validate: "required" }]
             },
             {
                 label: "Last Name",
                 key: "lastName",
-                sizeHint: 0.8,
-                alternates: ["last"]
             },
             {
                 label: "Email Address",
@@ -41,15 +37,11 @@ export const schemas = {
             },
             {
                 label: "Country",
-                key: "country",
-                sizeHint: 0.8,
-                validators: [{ validate: "regex_matches", regex: "^[A-Z]{2}$" }]
+                key: "country"
             },
             {
                 label: "Zip Code",
-                key: "zipCode",
-                sizeHint: 0.8,
-                alternates: ["postal code", "zip"]
+                key: "zipCode"
             },
             {
                 label: "Subscriber?",
@@ -79,10 +71,6 @@ export const schemas = {
             }
         ],
         type: "Contacts",
-        allowInvalidSubmit: true,
-        managed: true,
-        allowCustom: true,
-        disableManualInput: false,
-        devMode: false
+        managed: true
     }
 };

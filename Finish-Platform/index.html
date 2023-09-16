@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Flatfile Demo</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./src/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/@flatfile/javascript@0.1.10/dist/index.js"></script>
+    <script src="https://unpkg.com/@flatfile/plugin-record-hook@1.1.1/dist/main.js"></script>
+    <script src="https://unpkg.com/@flatfile/api@1.5.25/index.js"></script>
+    <script src="https://unpkg.com/@flatfile/listener@0.3.15/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/index.min.js"></script>
+
+</head>
+
+<body>
+    <div id="main">
+        <input
+            type="button"
+            id="launch"
+            value="Import Contacts"
+            onclick="openFlatfile({publishableKey: 'pk_e4bc8cb190104ab0b290a7bb9462fd0a', environmentId: 'us_env_chSnx4r5'})"
+        />
+        <textarea id="raw_output">Your raw output will appear here.</textarea>
+    </div>
+    <script src="./helpers/formatPhoneNumber.js"></script>
+    <script src="./helpers/countries.js"></script>
+    <script src="./listeners/listener.js"></script>
+    <script src="./src/schemas.js"></script>
+    <script src="./src/index.js"></script>
+</body>
+</html>
