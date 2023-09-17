@@ -1,4 +1,4 @@
-const workbook = {
+export const workbook = {
     name: "Contacts",
     labels: ["pinned"],
     sheets: [
