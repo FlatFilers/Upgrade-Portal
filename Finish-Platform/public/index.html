@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Flatfile Demo</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="module" src="../src/index.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <input
+            type="button"
+            id="launch"
+            value="Import Contacts"
+            onclick="openFlatfile({publishableKey: 'YOUR_PRIVATE_KEY', environmentId: 'YOUR_ENV_ID'})"
+        />
+        <textarea id="raw_output">Your raw output will appear here.</textarea>
+    </div>
+</body>
+</html>

@@ -1,13 +1,13 @@
-// import { FlatfileListener } from "@flatfile/listener";
-// import api, { FlatfileClient } from "@flatfile/api";
-// import { recordHook } from "@flatfile/plugin-record-hook";
+import { FlatfileListener } from "@flatfile/listener";
+import api, { FlatfileClient } from "@flatfile/api";
+import { recordHook } from "@flatfile/plugin-record-hook";
 
-const flatfile = new api.FlatfileClient({
-    token: "sk_95dbce45684042fca8afa782f8695b01",
+const flatfile = new FlatfileClient({
+    token: process.env.FLATFILE_API_KEY,
     environment: process.env.BASE_URL + "/v1",
 });
 
-const listener = FlatfileListener.create((listener) => {
+export const listener = FlatfileListener.create((listener) => {
     listener.on("**", (event) => {
         console.log("Event =>", event);
     });
