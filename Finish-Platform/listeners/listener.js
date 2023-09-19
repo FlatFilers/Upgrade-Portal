@@ -11,7 +11,7 @@ export const listener = FlatfileListener.create((listener) => {
     listener.on("**", (event) => {
         console.log("Event =>", event);
     });
-
+    // This record hook was all a part of the /Start-Portal-2/src/index.js
     listener.use(
         recordHook("contacts", (record) => {
             const email = record.get("email");

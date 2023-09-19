@@ -1,6 +1,6 @@
 # Upgrade Playground
 
-This repository was created to show you how your Portal 2.0 implementation would look as a Platform implementation. You are able to run both the Start-Portal-2 and Finish-Platform folders individually to see just how this would work.
+This repository was created to show you how your Portal 2.0 implementation would look as a Platform implementation. You are able to run both the Start-Portal-2 and Finish-Platform folders individually to see just how this would work. You can check out the [Upgrade Guide](https://flatfile.com/docs/guides/upgrade/v2_upgrade) to get more info about how this update works.
 
 ## Running the solutions
 ### Start-Portal-2

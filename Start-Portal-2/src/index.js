@@ -10,7 +10,7 @@ importer.setCustomer({
     name: "Foo Bar"
 });
 
-// Allows the optional +1 international code
+// Allows the optional +1 international code - moved to /Finish-Platform/helpers/formatPhoneNumber.js in the finished solution
 function formatPhoneNumber(phoneNumberString) {
     let cleaned = ("" + phoneNumberString).replace(/\D/g, "");
     let match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
@@ -21,6 +21,7 @@ function formatPhoneNumber(phoneNumberString) {
     return "Invalid phone number";
 }
 
+// Record hooks move into the listener in Platform. Check out /Finish-Platform/listners/listner.js to see where this moved
 importer.registerRecordHook(async (record, index, mode) => {
     let out = {};
 
