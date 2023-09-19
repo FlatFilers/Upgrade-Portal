@@ -1,3 +1,4 @@
+// In the original solution, this was a part of /Start-Portal-2/src/index.js
 const formatPhoneNumber = (phoneNumberString) => {
     let cleaned = ("" + phoneNumberString).replace(/\D/g, "");
     let match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
