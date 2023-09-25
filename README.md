@@ -17,6 +17,20 @@ This command will start a local web server for you and run your application on p
 
 *_Note_* In order for the Flatfile importer to work properly, you will have to utilize a web server to run it, otherwise the Flatfile importer will never load and the button will seemingly not work. Following the previous steps and using the start command will start this server for you. 
 
+### Start-Portal-3
+Navigate to the `Start-Portal-3/Contacts` directory. Install the node modules with: 
+
+```bash
+npm install
+```
+Next, you'll need to copy the .env.example to .env.
+```bash
+cp .env.example .env
+```
+You'll then need to login to [app.flatfile.com](https://app.flatfile.com) and get your Access Key and put it in `FLATFILE_ACCESS_KEY_ID`, your Access Key Secret and put it in `FLATFILE_SECRET`, the environment you wish to deploy to (this will be `test` or `prod`) for `FLATFILE_ENV`, and finally your Team Id goes into `FLATFILE_TEAM_ID`. *_Note_* Your Flatfile Team Id can be obatined from the URL once you have logged in. The URL should be `app.flatfile.com/a/<TEAM_ID>/env` and the numbers after the `/a` are your Team Id.
+
+Once you've got your .env file all setup, you can run `npx flatfile deploy /src/index.ts` to deploy this configuration to a Portal. There will be a link in the CLI that takes you to a test window to test your deployment. 
+
 ### Start Finish-Platform
 
 In order to utilize Platform, you will have to have a Platform account. There is a new dashboard and login for Plaftorm. If you haven't signed up, please visit [platform.flatfile.com](https://platform.flatfile.com) to sign up for your free account. 
