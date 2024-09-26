@@ -94,7 +94,7 @@ const flatfile = new FlatfileClient({
     environment: process.env.BASE_URL + "/v1",
 });
 
-export const listener = FlatfileListener.create((listener) => {
+export default (listener) => {
     listener.on("**", (event) => {
         console.log("Event =>", event);
     });
@@ -133,4 +133,4 @@ export const listener = FlatfileListener.create((listener) => {
             }
         });
     });
-});
+};
