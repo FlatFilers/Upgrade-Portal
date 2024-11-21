@@ -1,6 +1,6 @@
 # Upgrade Playground
 
-This repository was created to show you how your Portal 2.0 implementation would look as a Platform implementation. You are able to run both the Start-Portal-2 and Finish-Platform folders individually to see just how this would work. You can check out the [Upgrade Guide](https://flatfile.com/docs/guides/upgrade/v2_upgrade) to get more info about how this update works.
+This repository was created to show you how your Portal 2.0 and Portal 3.0 implementations would look as a Platform implementation. You are able to run both the Start-Portal-2 or Start-Portal-3 and Finish-Platform folders individually to see just how this would work. You can check out the [Upgrade Guide](https://flatfile.com/docs/upgrade/overview) to get more info about how this update works.
 
 ## Running the solutions
 ### Start-Portal-2
@@ -33,7 +33,7 @@ Once you've got your .env file all setup, you can run `npx flatfile deploy /src/
 
 ### Start Finish-Platform
 
-In order to utilize Platform, you will have to have a Platform account. There is a new dashboard and login for Plaftorm. If you haven't signed up, please visit [platform.flatfile.com](https://platform.flatfile.com) to sign up for your free account. 
+In order to utilize Platform, you will have to have a Platform account. There is a new dashboard and login for Plaftorm. If you haven't signed up, please visit our [Signup Page](https://flatfile.com/account/sign-up/) to sign up for your free account. 
 
 Go to the `Finish-Platform` directory. Install node modules.
 ```
